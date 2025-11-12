@@ -28,7 +28,7 @@ jobs:
                     username: ${{ github.repository_owner }}
                     password: ${{ secrets.GITHUB_TOKEN }}
 
-            -   name: Build and cache multi-platform image
+            -   name: Build initial image
                 uses: docker/build-push-action@v6
                 with:
                     cache-from: type=gha
@@ -36,7 +36,7 @@ jobs:
                     load: true
                     tags: build-chromium
 
-            -   name: Determine version of Chromium downloaded
+            -   name: Determine version of Chromium obtained
                 env:
                     CHROMIUM_VERSION_REGEXP: 'Chromium ([0-9]+)\.'
                 run: |
@@ -50,7 +50,7 @@ jobs:
                     
                     echo "CHROMIUM_VERSION=${BASH_REMATCH[1]}" >> $GITHUB_ENV
 
-            -   name: Push image to registry
+            -   name: Build cross-platform images and push to registry
                 if: github.event_name != 'pull_request'
                 uses: docker/build-push-action@v6
                 with:
