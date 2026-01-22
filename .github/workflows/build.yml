@@ -5,12 +5,11 @@ permissions:
     packages: write
 
 on:
+    pull_request:
     workflow_dispatch:
-
     push:
         branches:
             - main
-
     schedule:
         -   cron: 43 2 * * 0
 
@@ -33,6 +32,7 @@ jobs:
                 with:
                     cache-from: type=gha
                     cache-to: type=gha,mode=max
+                    pull: true
                     load: true
                     tags: build-chromium
 
@@ -65,3 +65,12 @@ jobs:
                 env:
                     DOCKER_BUILD_SUMMARY: false
                     DOCKER_BUILD_RECORD_UPLOAD: false
+
+            -   name: Delete potentially remaining, untagged container images
+                if: github.event_name != 'pull_request'
+                uses: Chizkiyahu/delete-untagged-ghcr-action@v6
+                with:
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    package_name: alpine-chromium
+                    owner_type: org
+                    untagged_only: true
