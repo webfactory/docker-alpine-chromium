@@ -1590,6 +1590,46 @@
             "name": "epoll_pwait2",
             "action": "SCMP_ACT_ALLOW",
             "args": null
+        },
+        {
+            "name": "preadv2",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "pwritev2",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "pkey_alloc",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "pkey_free",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "pkey_mprotect",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "membarrier",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "rseq",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
+        },
+        {
+            "name": "clone3",
+            "action": "SCMP_ACT_ALLOW",
+            "args": null
         }
     ]
 }
