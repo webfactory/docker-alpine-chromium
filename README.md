@@ -18,3 +18,4 @@ The security profile is necessary to modify the allowed syscalls. See https://bl
 https://github.com/jessfraz/dotfiles/blob/main/etc/docker/seccomp/chrome.json for the original source of this profile.
 
 Since then, it seems the Chromium requirements have evolved, so [another set of permissions needed to be granted](https://github.com/jlandure/alpine-chrome/issues/272).
+[And another one.](https://github.com/webfactory/docker-alpine-chromium/pull/3)
